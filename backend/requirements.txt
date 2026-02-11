@@ -4,3 +4,4 @@ flask-cors
 werkzeug
 ImageHash
 Pillow
+gunicorn

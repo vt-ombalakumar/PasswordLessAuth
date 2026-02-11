@@ -8,7 +8,7 @@ import io
 from PIL import Image, ImageOps
 import imagehash
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
 # Use a secret key for session management
 app.config['SECRET_KEY'] = 'dev-secret-key-change-in-prod'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -156,6 +156,15 @@ def verify_answer():
             
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+
+@app.route('/')
+def serve():
+    return app.send_static_file('index.html')
+
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
