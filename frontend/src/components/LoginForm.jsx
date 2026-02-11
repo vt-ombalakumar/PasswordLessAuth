@@ -78,8 +78,16 @@ const LoginForm = () => {
                             />
                         </div>
                         {error && <p className="text-red-500 text-sm text-center bg-red-900/20 py-2 rounded">{error}</p>}
+                        <div className="flex justify-between items-center mb-6">
+                            <div className="text-sm">
+                                <Link to="/forgot-pattern" className="font-medium text-blue-400 hover:text-blue-300">
+                                    Forgot pattern?
+                                </Link>
+                            </div>
+                        </div>
+
                         <button type="submit" className="btn-primary">
-                            Continue
+                            Unlock Identity
                         </button>
                     </form>
                 ) : (
